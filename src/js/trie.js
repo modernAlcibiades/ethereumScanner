@@ -116,7 +116,7 @@ class Trie {
 
     print(prefix = '', node = this.root) {
         node.print(prefix);
-        for (key in node.children) {
+        for (let key in node.children) {
             this.print(`${prefix}\t`, node.children[key]);
         };
     }

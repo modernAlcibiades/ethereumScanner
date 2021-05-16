@@ -15,7 +15,7 @@
     let routes = [
         {path:"/", name:"Home", object:Home, props:props},
         {path:"about", name:"About", object:About, props:props},
-        {path:"block", name:"Blocks Explorer", object: Block},
+        {path:"block", name:"Blocks Explorer", object: Block, props:props},
     ];
     //      <Route path="block/:id" component="{BlockDetails}" />
   </script>

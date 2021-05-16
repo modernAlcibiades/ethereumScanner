@@ -1,4 +1,3 @@
-import { writable } from 'svelte/store';
 const ethers = require('ethers');
 const { Wallet, utils } = ethers;
 
@@ -77,4 +76,4 @@ class Blocks {
     }
 }
 
-export const blocks = writable(new Blocks());
+export const blocks = new Blocks();
