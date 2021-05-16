@@ -1,0 +1,24 @@
+{
+  "name": "ethereumscanner",
+  "version": "1.0.0",
+  "description": "Utilities for processing data on Ethereum based chains",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/modernAlcibiades/ethereumScanner.git"
+  },
+  "author": "modernAlcibiades",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/modernAlcibiades/ethereumScanner/issues"
+  },
+  "homepage": "https://github.com/modernAlcibiades/ethereumScanner#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-svelte": "^4.0.6",
+    "svelte": "^3.38.2"
+  }
+}
