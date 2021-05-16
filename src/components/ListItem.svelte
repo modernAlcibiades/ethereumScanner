@@ -1,23 +1,18 @@
 <script>
     export let block;
-	import {QRCode} from '../js/qrcode.min.js';
+	import {QrCode} from 'svelte-qrcode';
 
 	let qrcode;
 			
 	function QR(url) {
-		qrcode = new QRCode("qrcode", {
-			text: url,
-			width: squareSize,
-			height: squareSize,
-			colorDark : "#000000",
-			colorLight : "#ffffff",
-			correctLevel : QRCode.CorrectLevel.H
+		qrcode = QrCode("qrcode", {
+			value: url,
 		});
 	}				
 </script>
 
 <div class='card'>
-	<div id="qrcode" on:load={qrcode}></div>
+	<div id="qrcode" src={qrcode} on:load={QR(block.url)}></div>
 	<h2>{block.number}</h2>
 </div>
 
@@ -51,10 +46,5 @@
 	h2 {
 		margin: 0 0 0.5em 0;
 		font-size: 16px;
-	}
-
-	p {
-		margin: 0;
-		font-size: 14px;
 	}
 </style>

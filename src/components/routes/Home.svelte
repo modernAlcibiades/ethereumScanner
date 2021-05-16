@@ -1,5 +1,5 @@
 <script>
-    export let name;
+    export let props;
     import { getBlock, blocks } from '../../js/getData';
 
     let start;
@@ -8,9 +8,8 @@
   </script>
   
 <main>
-    <h1>Hello {name}!</h1>
+    <h1>Hello {props.name}!</h1>
     <button on:click={getBlock('latest')}>Get Current Block</button>
-    
 </main>
 
 
