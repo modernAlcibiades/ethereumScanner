@@ -6,13 +6,15 @@ const CHAIN = 'mainnet';
 const INFURA_NODE = `https://${CHAIN}.infura.io/v3/c7310ea1d36343bd96955863aa37dfee`;
 
 const Block = require('./block.js');
+const Trie = require('./Trie.js');
 //const Txn = require('./transaction.js');
 
 let getBlockTransactions = false;
-let blocks = [];
+let blocks = new Trie();
+let blockList = [];
 let MAX_BLOCKS = 2;
 
-async function getBlock(blockNumber = 'latest') {
+async function downloadBlock(blockNumber = 'latest') {
     let request = {
         jsonrpc: "2.0",
         id: 1,
@@ -23,21 +25,31 @@ async function getBlock(blockNumber = 'latest') {
         ]
     }
     let data = await axios.post(INFURA_NODE, request).then((response) => { return response.data; });
+    let block;
     if (data.error) {
-        console.log(data);
+        console.log(data.error);
     } else {
-        console.log(data);
-        blocks.push(new Block(await data.result));
+        console.log("Downloaded new block")
+        console.log(data.result);
+        block = new Block(await data.result);
+        blocks.insert(block.number, block);
     }
-    //qrcode = newQRCode(data.)
-    return data.result;
+    return block;
+}
+
+async function getBlock(blockNumber) {
+    let block = blocks.getValue();
+    if (block === null) {
+        block = downloadBlock(blockNumber);
+    }
+    return block;
 }
 
 async function populateBlocks() {
     let blockNumber = 'latest';
     while (blocks.length < MAX_BLOCKS) {
-        let result = await getBlock(blockNumber, false);
-        blockNumber = '0x' + (parseInt(result.number) - 1).toString(16);
+        let block = await getBlock(blockNumber, false);
+        blockNumber = '0x' + (parseInt(block.number) - 1).toString(16);
     }
 }
 

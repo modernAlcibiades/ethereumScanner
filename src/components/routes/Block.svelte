@@ -11,34 +11,23 @@
         });
 
 </script>
-
-<h1>Blocks</h1>
-
-<div class="blocks">
-	{#each blocks as block}
-        <ListItem block={block}/>
-	{:else}
-		<!-- this block renders when photos.length === 0 -->
-		<p>loading...</p>
-	{/each}
+<div class="container">
+    <h1>Blocks</h1>
+    <div class=grid id=blocks>
+        {#each blocks as block}
+            <ListItem block={block}/>
+        {:else}
+            <!-- this block renders when photos.length === 0 -->
+            <p>loading...</p>
+        {/each}
+    </div>
 </div>
 
 <style>
-	.blocks {
+	#blocks {
 		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);
 		grid-gap: 8px;
-	}
-
-    #qrcode {
-        width:160px;
-        height:160px;
-        margin-top:15px;
-    }
-
-	figure, img {
-		width: 100%;
-		margin: 0;
 	}
 </style>
