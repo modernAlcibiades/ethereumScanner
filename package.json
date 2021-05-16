@@ -3,8 +3,13 @@
   "version": "1.0.0",
   "description": "Utilities for processing data on Ethereum based chains",
   "main": "index.js",
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html"
   },
   "repository": "git+https://github.com/modernAlcibiades/ethereumScanner.git",
   "author": "modernAlcibiades",
@@ -16,6 +21,7 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-svelte": "^4.0.6",
+    "sass": "^1.32.13",
     "svelte": "^3.38.2"
   }
 }
