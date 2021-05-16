@@ -22,6 +22,13 @@
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-svelte": "^4.0.6",
     "sass": "^1.32.13",
-    "svelte": "^3.38.2"
+    "svelte": "^3.20.x"
+  },
+  "dependencies": {
+    "@sveltejs/svelte-virtual-list": "^3.0.1",
+    "axios": "^0.21.1",
+    "ethers": "^5.1.4",
+    "qrcode": "^1.4.4",
+    "svelte-routing": "^1.6.0"
   }
 }
