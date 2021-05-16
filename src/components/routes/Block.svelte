@@ -1,21 +1,20 @@
 <script>
-    import ListItem from "../ListItem.svelte";
+    import BlockItem from "../BlockItem.svelte";
 	import { onMount } from 'svelte';
-    import { populateBlocks, returnBlocks } from '../../js/getData';
-    let qrcode;
-    let blocks = [];
-
+    export let props;
+    let bls = [];
 	onMount(async () => {
-        await populateBlocks();
-        blocks = returnBlocks();
+        await props.blocks.populateBlocks();
+        bls = Object.keys(await props.blocks.returnBlocks()).sort();
+        console.log(bls);
         });
 
 </script>
 <div class="container">
     <h1>Blocks</h1>
-    <div class=grid id=blocks>
-        {#each blocks as block}
-            <ListItem block={block}/>
+    <div class=grid id=whatever>
+        {#each bls as bn}
+            <BlockItem blockNumber={bn}/>
         {:else}
             <!-- this block renders when photos.length === 0 -->
             <p>loading...</p>
@@ -24,7 +23,7 @@
 </div>
 
 <style>
-	#blocks {
+	#whatever {
 		width: 100%;
 		display: grid;
 		grid-template-columns: repeat(5, 1fr);

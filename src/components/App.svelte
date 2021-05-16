@@ -9,10 +9,12 @@
   
     export let url = "";
     export let name;
+    export let blocks;
+    let props = {name:name, blocks:blocks};
 
     let routes = [
-        {path:"/", name:"Home", object:Home, props:{name:name}},
-        {path:"about", name:"About", object:About, props:{name:name}},
+        {path:"/", name:"Home", object:Home, props:props},
+        {path:"about", name:"About", object:About, props:props},
         {path:"block", name:"Blocks Explorer", object: Block},
     ];
     //      <Route path="block/:id" component="{BlockDetails}" />

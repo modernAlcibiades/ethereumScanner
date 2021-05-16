@@ -1,15 +1,18 @@
 <script>
     export let props;
-    import { getBlock, blocks } from '../../js/getData';
+    async function getBlock(){
+        return await props.blocks.getBlock();
+    }
 
-    let start;
-    let end;
-
+    function printBlocks(){
+        return props.blocks.printBlocks();
+    }
   </script>
   
 <main>
     <h1>Hello {props.name}!</h1>
-    <button on:click={getBlock('latest')}>Get Current Block</button>
+    <button on:click={getBlock}>Get Current Block</button>
+    <button on:click={printBlocks}>Print Blocks Trie</button>
 </main>
 
 
