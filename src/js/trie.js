@@ -47,7 +47,7 @@ class Trie {
     }
 
     insert(hash, value, node = this.root) {
-        console.log(`inserting ${hash}`)
+        //console.log(`inserting ${hash}`)
         if (node.key == null) {
             node.key = hash;
         }

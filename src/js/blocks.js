@@ -2,9 +2,6 @@ const ethers = require('ethers');
 const { Wallet, utils } = ethers;
 
 const axios = require('axios');
-const CHAIN = 'mainnet';
-const INFURA_NODE = `https://${CHAIN}.infura.io/v3/c7310ea1d36343bd96955863aa37dfee`;
-
 const Trie = require('./trie.js');
 //const Txn = require('./transaction.js');
 
@@ -13,8 +10,19 @@ class Blocks {
         this.getBlockTransactions = false;
         this.blocks = new Trie();
         this.blocksDict = {};
-        this.MAX_BLOCKS = 10;
+        this.MAX_BLOCKS = 6;
         this.num_blocks = 0;
+        this.setChain('mainnet');
+    }
+
+    setChain(chain = 'mainnet') {
+        this.CHAIN = chain;
+        this.INFURA_NODE = `https://${chain}.infura.io/v3/c7310ea1d36343bd96955863aa37dfee`;
+    }
+
+    setMaxBlocks(num) {
+        this.MAX_BLOCKS = num;
+
     }
 
     async downloadBlock(blockNumber = 'latest') {
@@ -27,7 +35,7 @@ class Blocks {
                 this.getBlockTransactions
             ]
         }
-        let data = await axios.post(INFURA_NODE, request).then((response) => { return response.data; });
+        let data = await axios.post(this.INFURA_NODE, request).then((response) => { return response.data; });
         if (data.error) {
             console.log(data.error);
         } else {
