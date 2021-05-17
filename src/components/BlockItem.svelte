@@ -1,14 +1,16 @@
 <script>
     export let blockNumber;
-	import {QrCode} from 'svelte-qrcode';	
+	//import {QrCode} from 'svelte-qrcode';	
+	import QR from 'svelte-qr'
+	let qrcode = `https://etherscan.io/block/${blockNumber}`;
+	console.log(qrcode);
 </script>
 
-<div class='card'>
-	<h2>{blockNumber}</h2>
-	<!--div class="container">
-		<QrCode value={`https://etherscan.io/block/${blockNumber}`} size=32/>
-	</div-->
-</div>
+	<div class='card'>
+		<h2>{blockNumber}</h2>
+		<QR bind:text={qrcode}/>
+	</div>
+
 
 <style>
 	.card {
@@ -19,11 +21,6 @@
 		border-radius: 4px;
 		box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 		min-height: 5em;
-	}
-
-	.card::after {
-		clear: both;
-		display: block;
 	}
 
 	h2 {

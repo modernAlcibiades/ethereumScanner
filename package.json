@@ -29,6 +29,8 @@
     "axios": "^0.21.1",
     "ethers": "^5.1.4",
     "qrcode": "^1.4.4",
+    "svelte-grid": "^4.1.0",
+    "svelte-qr": "^1.0.0",
     "svelte-qrcode": "^1.0.0",
     "svelte-routing": "^1.6.0"
   }
