@@ -8,7 +8,9 @@
 
 	<div class='card'>
 		<h2>{blockNumber}</h2>
-		<QR bind:text={qrcode}/>
+		<div id='qr'>
+			<QR bind:text={qrcode}/>
+		</div>
 	</div>
 
 
@@ -21,8 +23,13 @@
 		border-radius: 4px;
 		box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 		min-height: 5em;
+		max-width: 20em;
 	}
 
+	#qr{
+		max-width: 16em;
+		max-height: 16em;
+	}
 	h2 {
 		margin: 0 0 0.5em 0;
 		font-size: 16px;

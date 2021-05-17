@@ -1,4 +1,5 @@
 <script>
+    
     import BlockItem from "../BlockItem.svelte";
 	import { onMount } from 'svelte';
     export let props;
@@ -35,12 +36,12 @@
         console.log("selected network : ", selectedChain);
         props.blocks.setChain(selectedChain);
         await props.blocks.populateBlocks();
-        console.log(container);
     }
 
     async function updateBlocks(){
         bls = Object.keys(await props.blocks.returnBlocks()).sort();
-        console.log(bls);
+        //console.log(bls);
+        console.log(container);
     }
 
 	onMount(async () => {
@@ -53,7 +54,7 @@
     <h1>Hello {props.name}!</h1>
     <div class="container">
         <h1>Blocks</h1>
-        <div class=grid id=whatever bind:this={container}>
+        <div class=grid id='whatever' bind:this={container}>
             {#each bls as bn}
                 <BlockItem blockNumber={bn}/>
             {:else}
